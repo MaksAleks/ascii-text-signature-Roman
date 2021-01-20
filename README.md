@@ -18,84 +18,87 @@ d8(  888   888   888 888   .o8 888   888
 `Y888""8o  `Y8bod8P' `Y8bod8P' `Y8bod88P"
 ```
 
-You can download [this font]() , along with the smaller and less fancy font
-from the previous example.
+You can download [this font](src/main/resources/font/roman.txt) , along
+with the
+[smaller and less fancy font](src/main/resources/font/medium.txt) from
+the previous example.
 
-Notice that the width of the letters in this font varies.  
-For example, the width of the letter T is 3 characters, and  
-for the letter Y, it is 5. You can find the letter boundaries  
-by determining spaces in the same positions in all three lines of the
-font.
+As you may remember, the width of a space in the Medium font is 4
+symbols. In the Roman font, your program should base the width of the
+space on the width of the “a” symbol; the space should be 10 symbols
+wide.
 
-Also, each tag should contain the status of the person wearing it.  
-This could be "VIP", "Worker", "Speaker", "Administrator",
-"Participant", or something else.These statuses should appear on the
-tag, below the person's name.  
-This information is not as important as the name, so it should be
-printed in a smaller font.
+It looks very authentic, doesn’t it? Unfortunately, there’s not enough
+space here to include all lowercase and uppercase letters.
 
-To be readable, every symbol in this font should be separated by a
-column of spaces.
+All these fonts have a special description included in their .txt file.
+The first line of the file contains two numbers. The first number is
+font size, which indicates how many lines are needed to print one line
+of text using this font. For example, the Medium font needs 3 lines, and
+the Roman font needs 10. The second number is the number of characters
+described in the file. The file for each font contains information about
+52 characters: 26 uppercase and 26 lowercase letters.
 
-You may have noticed that there is no space among these symbols. As
-shown in the example below, you should consider a space to be 4 symbols
-wide not including spaces between symbols, or 6 symbols wide including
-spaces between symbols.
+The next lines contain information about the characters, one after
+another. The information about each character includes: this character,
+then the width of the character, and on the next lines, the way the
+character is represented in ASCII. Note that these fonts contain a
+column of spaces at the end of every symbol, so you don't need to add
+any.
 
-Also, there should be exactly two spaces between the border and the
-beginning and end of the name (or status, if it is longer than the
-name).
+Don't worry, reading text from a file is as simple as reading from the
+console. You can use a scanner to do this, but instead of System.`in`,
+pass File(pathToFont) when creating a scanner. You should make sure to
+use an absolute path to avoid problems with checking. For example, use
+`Scanner(File("C:/fonts/roman.txt"))` for the Roman font on **Windows**,
+or `Scanner(File("/home/username/fonts/roman.txt"))` on **Linux/MacOS**
+systems.
 
-In some cases, the width of the tag may have an even number of symbols
-while the status has an odd number of symbols (or vice versa). In these
-cases, you cannot generate a status that sits right in the middle, since
-it will always be offset by one character on the left or the right. In
-this case, your program should move the status to the left so there is
-one fewer space to the left of the status than to the right it.
+At this stage, you need to create a program that generates a name tag
+using the Roman font. It should also print the status of this person
+using the Medium font. The status of the person should be centered. When
+the length of the status is longer than the length of the full name,
+then the name and last name should be centered.
 
 ### Output examples
 
 ```
-Enter name and surname: Bill Gates
+Enter name and surname: Ian One
 Enter person's status: VIP
-***************************************************
-*  ___  _ _    _         ____ ____ ___ ____ ____  *
-*  |__] | |    |         | __ |__|  |  |___ [__   *
-*  |__] | |___ |___      |__] |  |  |  |___ ___]  *
-*                       VIP                       *
-***************************************************
+888888888888888888888888888888888888888888888888888888888888888888888888888888888
+88  ooooo                                   .oooooo.                           88
+88  `888'                                  d8P'  `Y8b                          88
+88   888   .oooo.   ooo. .oo.             888      888 ooo. .oo.    .ooooo.    88
+88   888  `P  )88b  `888P"Y88b            888      888 `888P"Y88b  d88' `88b   88
+88   888   .oP"888   888   888            888      888  888   888  888ooo888   88
+88   888  d8(  888   888   888            `88b    d88'  888   888  888    .o   88
+88  o888o `Y888""8o o888o o888o            `Y8bood8P'  o888o o888o `Y8bod8P'   88
+88                                                                             88
+88                                                                             88
+88                                                                             88
+88                                _  _ _ ___                                   88
+88                                |  | | |__]                                  88
+88                                 \/  | |                                     88
+888888888888888888888888888888888888888888888888888888888888888888888888888888888
 ```
 
 ```
-Enter name and surname: Tom Smith
-Enter person's status: Worker
-*********************************************
-*  ___ ____ _  _      ____ _  _ _ ___ _  _  *
-*   |  |  | |\/|      [__  |\/| |  |  |__|  *
-*   |  |__| |  |      ___] |  | |  |  |  |  *
-*                  Worker                   *
-*********************************************
-```
-
-```
-Enter name and surname: Mr Anonimous
-Enter person's status: Participant
-**************************************************************
-*  _  _ ____      ____ _  _ ____ _  _ _ _  _ ____ _  _ ____  *
-*  |\/| |__/      |__| |\ | |  | |\ | | |\/| |  | |  | [__   *
-*  |  | |  \      |  | | \| |__| | \| | |  | |__| |__| ___]  *
-*                        Participant                         *
-**************************************************************
-```
-
-```
-Enter name and surname: John S
-Enter person's status: Worker-coworker-superdupercoworker
-****************************************
-*      _ ____ _  _ _  _      ____      *
-*      | |  | |__| |\ |      [__       *
-*     _| |__| |  | | \|      ___]      *
-*  Worker-coworker-superdupercoworker  *
-****************************************
+Enter name and surname: A b
+Enter person's status: long participant
+88888888888888888888888888888888888888888888888888888888888888888888888888888888
+88                         .o.                  .o8                           88
+88                        .888.                "888                           88
+88                       .8"888.                888oooo.                      88
+88                      .8' `888.               d88' `88b                     88
+88                     .88ooo8888.              888   888                     88
+88                    .8'     `888.             888   888                     88
+88                   o88o     o8888o            `Y8bod8P'                     88
+88                                                                            88
+88                                                                            88
+88                                                                            88
+88  _    ____ _  _ ____      ___  ____ ____ ___ _ ____ _ ___  ____ _  _ ___   88
+88  |    |  | |\ | | __      |__] |__| |__/  |  | |    | |__] |__| |\ |  |    88
+88  |___ |__| | \| |__]      |    |  | |  \  |  | |___ | |    |  | | \|  |    88
+88888888888888888888888888888888888888888888888888888888888888888888888888888888
 ```
 
